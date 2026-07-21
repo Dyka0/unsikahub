@@ -1,2 +1,2 @@
 # unsikahub
-Student portfolio web app built with native PHP &amp; MySQL — login/register, admin &amp; user roles, portfolio CRUD, cover/proof upload, and search.
+UnsikaHub is a student portfolio web application built with native PHP, MySQL, and PDO — no framework. It supports authentication (login/register/logout) with hashed passwords, two user roles (admin & user), portfolio CRUD organized by category (Website, Design, Photography, Business, etc.), cover and proof-of-work uploads, and search by keyword, category, student name, title, or description. A solid reference project for learning native PHP with clean, secure code practices (prepared statements, upload validation, protected upload folder).
