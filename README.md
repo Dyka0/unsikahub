@@ -1,28 +1,54 @@
-# UnsikaHub
+<div align="center">
 
-UnsikaHub adalah aplikasi portofolio mahasiswa berbasis **HTML + CSS + PHP + MySQL**. Desainnya terinspirasi dari pola website portofolio modern seperti Behance, Dribbble, Awwwards, dan Framer, tetapi tidak menyalin aset, merek, atau layout spesifik dari platform tersebut.
+# 🎓 UnsikaHub
 
-## Tech Stack
+**A student portfolio web application built with native PHP, MySQL, and PDO**
 
-- PHP native (tanpa framework)
-- MySQL / MariaDB
-- HTML, CSS, JavaScript (vanilla)
-- PDO untuk akses database
+![PHP](https://img.shields.io/badge/PHP-8%2B-777BB4?style=flat-square&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-MariaDB-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![No Framework](https://img.shields.io/badge/framework-none-orange?style=flat-square)
 
-## Fitur
+</div>
 
-1. Login, logout, dan register.
-2. Register wajib mengunggah foto pengguna.
-3. Role terpisah: `admin` dan `user`.
-4. Admin dapat mengelola data pengguna.
-5. Admin dapat mengubah role pengguna.
-6. Password tersimpan dalam bentuk hash menggunakan `password_hash()` dan diverifikasi dengan `password_verify()`.
-7. CRUD jenis portofolio: Website, Desain, Fotografi, Bisnis, dan lainnya.
-8. CRUD portofolio mahasiswa sesuai jenis portofolio.
-9. Upload cover dan bukti portofolio.
-10. Pencarian berdasarkan kata kunci, jenis, nama mahasiswa, judul, dan deskripsi.
+---
 
-## Struktur Folder
+## 📖 About
+
+**UnsikaHub** is a student portfolio web application built with native PHP, MySQL, and PDO — no framework. It supports authentication (login/register/logout) with hashed passwords, two user roles (admin & user), portfolio CRUD organized by category (Website, Design, Photography, Business, etc.), cover and proof-of-work uploads, and search by keyword, category, student name, title, or description.
+
+A solid reference project for learning native PHP with clean, secure code practices (prepared statements, upload validation, protected upload folder). Its design draws inspiration from modern portfolio platforms like Behance, Dribbble, Awwwards, and Framer — without copying their assets, branding, or specific layouts.
+
+## 📑 Table of Contents
+
+- [Tech Stack](#-tech-stack)
+- [Features](#-features)
+- [Folder Structure](#-folder-structure)
+- [Getting Started](#-getting-started)
+- [Default Admin Account](#-default-admin-account)
+- [Security Notes](#-security-notes)
+- [License](#-license)
+
+## 🛠 Tech Stack
+
+| Layer      | Technology                  |
+|------------|------------------------------|
+| Backend    | PHP (native, no framework)  |
+| Database   | MySQL / MariaDB via PDO     |
+| Frontend   | HTML, CSS, vanilla JavaScript |
+
+## ✨ Features
+
+- 🔐 Login, logout, and registration, with a required profile photo upload at registration
+- 👥 Two separate roles: `admin` and `user`
+- 🛡️ Admin can manage users and change user roles
+- 🔒 Passwords are hashed with `password_hash()` and verified with `password_verify()`
+- 🗂️ CRUD for portfolio categories: Website, Design, Photography, Business, and more
+- 📁 CRUD for student portfolios, organized by category
+- 🖼️ Cover image and proof-of-work uploads
+- 🔍 Search by keyword, category, student name, title, or description
+
+## 📂 Folder Structure
 
 ```text
 unsikahub/
@@ -31,10 +57,12 @@ unsikahub/
 │   └── users.php
 ├── assets/
 │   ├── css/style.css
+│   ├── img/
 │   └── js/app.js
-│   └── img/
-├── config/database.php
-├── database/unsikahub.sql
+├── config/
+│   └── database.php
+├── database/
+│   └── unsikahub.sql
 ├── includes/
 │   ├── auth.php
 │   ├── footer.php
@@ -55,39 +83,39 @@ unsikahub/
 └── register.php
 ```
 
-## Instalasi & Menjalankan Secara Lokal
+## 🚀 Getting Started
 
-Prasyarat: PHP 8+, MySQL/MariaDB, dan web server (bisa pakai XAMPP/Laragon).
+**Requirements:** PHP 8+, MySQL/MariaDB, and a web server (XAMPP or Laragon work great).
 
-1. Clone repository ini ke folder root web server, misal `htdocs/unsikahub` (XAMPP).
+1. **Clone the repository** into your web server's root folder, e.g. `htdocs/unsikahub` (XAMPP):
    ```bash
    git clone https://github.com/<username>/unsikahub.git
    ```
-2. Buat database baru bernama `unsikahub`, lalu import skema dari `database/unsikahub.sql`.
-3. Sesuaikan kredensial database di `config/database.php` (`DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`) dan `BASE_URL` sesuai folder project Anda.
-4. Pastikan folder `uploads/portfolio` dan `uploads/profile` dapat ditulis oleh web server (writable).
-5. Akses project melalui browser, misal `http://localhost/unsikahub`.
+2. **Create a database** named `unsikahub`, then import the schema from `database/unsikahub.sql`.
+3. **Configure the database connection** in `config/database.php` (`DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`) and set `BASE_URL` to match your project folder.
+4. **Set folder permissions** so `uploads/portfolio` and `uploads/profile` are writable by the web server.
+5. **Open the app** in your browser, e.g. `http://localhost/unsikahub`.
 
-## Akun Admin Awal
+## 🔑 Default Admin Account
 
 ```text
 Email    : admin@unsikahub.test
 Password : admin12345
 ```
 
-> Akun ini berasal dari data awal (seed) di `database/unsikahub.sql`. Segera ganti password setelah login pertama, terutama jika project di-deploy ke server publik.
+> This account comes from the seed data in `database/unsikahub.sql`. Change the password immediately after your first login, especially before deploying to a public server.
 
-Setelah login, admin dapat masuk ke menu **Pengguna** untuk mengubah role user dan menu **Jenis** untuk mengelola jenis portofolio.
+Once logged in, the admin can go to the **Users** menu to manage roles, and the **Types** menu to manage portfolio categories.
 
-## Catatan Penting
+## 🔒 Security Notes
 
-- Password tidak disimpan dalam bentuk teks biasa.
-- Query database menggunakan PDO prepared statement.
-- User hanya dapat mengedit dan menghapus portofolio miliknya sendiri.
-- Admin dapat mengelola pengguna, mengubah role, mengelola jenis portofolio, dan memantau portofolio.
-- Upload file dibatasi berdasarkan ekstensi dan ukuran file.
-- Folder `uploads` diberi `.htaccess` untuk menolak eksekusi file PHP.
+- Passwords are never stored in plain text
+- All database queries use PDO prepared statements
+- Users can only edit or delete their own portfolio entries
+- Admins can manage users, update roles, manage portfolio categories, and oversee all portfolios
+- File uploads are restricted by extension and file size
+- The `uploads/` folder includes an `.htaccess` rule that blocks PHP execution
 
-## Lisensi
+## 📄 License
 
-Project ini menggunakan lisensi [MIT](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
